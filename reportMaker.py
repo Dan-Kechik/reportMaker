@@ -25,6 +25,9 @@ def main():
         for d in dirs:
             if d == patternFoldy.rstrip('/'):
                 continue
+            fullPath = os.path.join(Root, d)
+            if not os.path.isdir(fullPath):
+                continue
             tempBody = tempBody + re.sub(patternFoldy, d + '\\\\Output\\\\', body) + '\n\n'
         text2 = headNbody[0] + tempBody + tail  # re.sub(body, tempBody, text)
         outName = os.path.split(Root)[-1] + '.htm'
